@@ -1,3 +1,7 @@
+# main.py
+
+from stats import get_num_words
+
 def get_book_text(filepath: str) -> str:
     """
     Reads and returns the full text of a book from a .txt file.
@@ -11,21 +15,13 @@ def get_book_text(filepath: str) -> str:
         raise RuntimeError(f"Error reading file: {e}")
 
 
-def count_words(text: str) -> int:
-    """
-    Returns the number of words in the given text.
-    """
-    words = text.split()
-    return len(words)
-
-
 def main():
     filepath = "books/frankenstein.txt"
-    book_text = get_book_text(filepath)
-    word_count = count_words(book_text)
+    text = get_book_text(filepath)
 
-    # message with the *actual computed* number
-    print(f"found {word_count} total words.")
+    word_count = get_num_words(text)
+
+    print(f"Found {word_count} total words.")
 
 
 if __name__ == "__main__":
